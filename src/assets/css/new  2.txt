@@ -1,0 +1,79 @@
+#WYJ_AO_07NV1
+		{
+	background-image:url('../img/tabliczka.png');
+	background-repeat:no-repeat;
+	z-index:1;
+	position:absolute;
+	padding-bottom:4px;
+	left: 297px;
+	top: -1px;
+	width: 63px;
+	height: 40px;
+	text-align:center;
+	line-height:15px;
+	}		
+
+#WYJ_AO_07NE1
+		{
+	background-image:url('../img/tabliczka.png');
+	background-repeat:no-repeat;
+	z-index:1;
+	position:absolute;
+	padding-bottom:4px;
+	left: 138px;
+	top: 242px;
+	width: 63px;
+	height: 40px;
+	text-align:center;
+	line-height:15px;
+}
+
+#POMIAR_07TE1 {
+	background-image:url('../img/tabliczka.png');
+	background-repeat:no-repeat;
+	z-index:1;
+	position:absolute;
+	padding-bottom:4px;
+	left: 225px;
+	top: 176px;
+	width: 63px;
+	height: 40px;
+	text-align:center;
+	line-height:15px;
+}
+	#POMIAR_07THE1_T{
+	background-image:url('../img/tabliczka1.png');
+	background-repeat:no-repeat;
+	position:absolute;
+	left: 140px;
+	top: 49px;
+	width: 77px;
+	height: 40px;
+	text-align:center;
+	line-height:15px;
+	}
+	#POMIAR_07THE1_H{
+	background-image:url('../img/tabliczka1.png');
+	background-repeat:no-repeat;
+	position:absolute;
+	left: 139px;
+	top: 79px;
+	width: 80px;
+	height: 35px;
+	text-align:center;
+	line-height:15px;
+	}
+		#SYGN_07PJ1 {
+	background-image:url('../img/tabliczka.png');
+	background-repeat:no-repeat;
+	z-index:1;
+	position:absolute;
+	padding-bottom:4px;
+	left: 307px;
+	top: 242px;
+	width: 63px;
+	height: 40px;
+	text-align:center;
+	line-height:15px;
+	
+	}
