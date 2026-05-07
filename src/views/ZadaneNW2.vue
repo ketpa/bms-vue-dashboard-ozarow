@@ -122,7 +122,6 @@ export default {
   data() {
     return {
       apiBase: 'http://192.168.1.155:1880',
-      userName: 'pawel',
       status: '',
       statusOk: true,
 
@@ -209,33 +208,30 @@ export default {
       }
     },
 
-    async send(point) {
-      const value = this.form[point];
+async send(point) {
+  try {
+    const savedUser = localStorage.getItem("user");
+    const currentUser = savedUser ? JSON.parse(savedUser) : null;
 
-      try {
-        const response = await axios.post(`${this.apiBase}/api/page3-setpoint`, {
-          point,
-          value,
-          user: this.userName
-        });
+    const value = this.form[point];
 
-        console.log(response.data);
+    await axios.post(`${this.apiBase}/api/page3-setpoint`, {
+      point,
+      value,
+      user: currentUser?.username || "unknown"
+    });
 
-        this.statusOk = true;
-        this.status = `Zapisano: ${point} = ${value}`;
+    this.statusOk = true;
+    this.status = `Zapisano: ${point} = ${value}`;
 
-        await this.loadInitialValues();
-      } catch (error) {
-        console.error(error);
-        this.statusOk = false;
+    await this.loadInitialValues();
+  } catch (error) {
+    console.error(error);
 
-        if (error.response && error.response.data && error.response.data.error) {
-          this.status = `Błąd: ${error.response.data.error}`;
-        } else {
-          this.status = `Błąd zapisu: ${point}`;
-        }
-      }
-    }
+    this.statusOk = false;
+    this.status = `Błąd zapisu: ${point}`;
+  }
+}
   }
 };
 </script>

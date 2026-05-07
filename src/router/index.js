@@ -3,6 +3,11 @@ import HomeView from '../views/HomeView.vue'
 import MySidebar from '../components/MySidebar.vue';
 import C0 from "../views/C0.vue";
 import C1 from "../views/C1.vue";
+import RoomNW1 from "@/components/RoomNW1.vue";
+import LoginView from "../views/LoginView.vue";
+import UsersView from "../views/UsersView.vue";
+import RoomNW1Zadane from "@/components/RoomNW1Zadane.vue";
+import RoomNW1Wymuszenia from "@/components/RoomNW1Wymuszenia.vue";
 
 
 
@@ -12,6 +17,16 @@ const routes = [
     name: 'home',
     component: HomeView,
     sidebar: MySidebar   // Sidebar pozostaje bez zmian
+  },
+    {
+    path: "/login",
+    name: "Login",
+    component: LoginView
+  },
+  {
+    path: "/users",
+    name: "users",
+    component: UsersView
   },
   {
     path: '/about',
@@ -39,6 +54,22 @@ const routes = [
     path: "/C0",
     name: "C0",
     component: C0,
+  },
+        {
+    path: '/PomiarCT',
+    name: 'PomiarCT',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/PomiarCT.vue')
+  },
+          {
+    path: '/SAK1',
+    name: 'SAK1',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/SAK1.vue')
   },
   {
     path: '/C2',
@@ -281,6 +312,22 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/PomiarNW2')
   },
   {
+    path: '/PomiarNW3',
+    name: 'PomiarNW3',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/PomiarNW3')
+  },
+  {
+    path: '/Wentylatornia',
+    name: 'Wentylatornia',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Wentylatornia')
+  },
+  {
     path: '/WyjsciaNW1',
     name: 'WyjsciaNW1',
     // route level code-splitting
@@ -296,11 +343,61 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/WyjsciaNW2')
   },
+      {
+    path: '/Pomieszczenie023_2',
+    name: 'Pomieszczenie023_2',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Pomieszczenie023_2')
+  },
+  {
+    path: '/HistoriaZmian',
+    name: 'HistoriaZmian',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/HistoriaZmian')
+  },
+  {
+  path: "/NW1/P:room",
+  name: "RoomNW1",
+  component: RoomNW1
+},
+{
+  path: "/NW1/P:room/zadane",
+  name: "RoomNW1Zadane",
+  component: RoomNW1Zadane
+},
+{
+  path: "/NW1/P:room/wymuszenia",
+  name: "RoomNW1Wymuszenia",
+  component: RoomNW1Wymuszenia
+},
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.path === "/login") return next();
+
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+
+  if (!user) {
+    return next("/login");
+  }
+
+  const requiredLevel = to.meta.level || 1;
+
+  if (user.level < requiredLevel) {
+    alert("Brak uprawnień");
+    return next("/");
+  }
+
+  next();
+});
 
 export default router

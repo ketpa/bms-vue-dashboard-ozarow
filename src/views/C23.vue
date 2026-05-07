@@ -53,7 +53,7 @@ export default {
 
   methods: {
     fetchData() {
-      axios.get('http://192.168.1.155:1880/C1.json') // 👈 bez zmian
+      axios.get('http://192.168.1.155:1880/C2.json') // 👈 bez zmian
         .then(response => {
           const updatedPoints = {};
 

@@ -84,7 +84,6 @@ export default {
   data() {
     return {
       apiBase: 'http://192.168.1.155:1880',
-      userName: 'pawel',
       status: '',
       statusOk: true,
 
@@ -153,10 +152,13 @@ export default {
       const value = this.form[point];
 
       try {
+        const savedUser = localStorage.getItem("user");
+        const currentUser = savedUser ? JSON.parse(savedUser) : null;
+
         await axios.post(`${this.apiBase}/api/page4-force`, {
           point,
           value,
-          user: this.userName
+          user: currentUser?.username || "unknown"
         });
 
         this.statusOk = true;

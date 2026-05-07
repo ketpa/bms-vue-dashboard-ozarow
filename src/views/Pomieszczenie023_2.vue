@@ -1,26 +1,23 @@
 <template>
   <div class="page">
-    <div class="menubottom">NW3, W4 &gt; Pomiary</div>
-    <p class="title">Pomiary</p>
+    <div class="menubottom">NW2 &gt; Pomieszczenie 023/2</div>
+    <p class="title">Pomieszczenie 023/2</p>
 
     <div class="pagebody">
-      <div v-for="section in sections" :key="section.title">
-        <p class="sectiontitle">{{ section.title }}</p>
+      <p class="sectiontitle">Pomiary</p>
 
-        <table class="table">
-          <tr v-for="item in section.items" :key="item.point">
-            <td>{{ item.label }}</td>
-            <td>
-              <span class="value">{{ getValue(item.point) }}</span>
-              <span class="unit">{{ item.unit }}</span>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <table class="table">
+        <tr v-for="item in items" :key="item.point">
+          <td>{{ item.label }}</td>
+          <td>
+            <span class="value">{{ getValue(item.point) }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </td>
+        </tr>
+      </table>
 
       <div class="bottom-bar">
         <button @click="load">Odśwież</button>
-        <span class="status">{{ status }}</span>
       </div>
     </div>
   </div>
@@ -30,64 +27,32 @@
 import axios from "axios";
 
 export default {
-  name: "NW3Pomiary",
+  name: "P023_2",
 
   data() {
     return {
-      source: "http://192.168.1.155:1880/C3.json",
-      status: "",
+      source: "http://192.168.1.155:1880/C2.json",
       interval: null,
       f: {},
 
-sections: [
-
-  {
-    title: "Temperatury",
-    items: [
-      {
-        point: "POMIAR_3TE1",
-        label: "3TE1 - Czujnik temperatury nawiewu",
-        unit: "°C"
-      },
-      {
-        point: "POMIAR_3TE2",
-        label: "3TE2 - Czujnik temperatury wywiewu",
-        unit: "°C"
-      },
-      {
-        point: "POMIAR_3TE3",
-        label: "3TE3 - Czujnik temperatury wymiennika krzyżowego",
-        unit: "°C"
-      }
-    ]
-  },
-  {
-    title: "Wyjścia cyfrowe",
-    items: [
-      { point: "WYJ_DO_NW3", label: "NW3 - Wyjście cyfrowe", unit: "" },
-      { point: "WYJ_DO_W4", label: "W4 - Wyjście cyfrowe", unit: "" }
-    ]
-  },
-  {
-    title: "Wyjścia analogowe",
-    items: [
-      { point: "WYJ_AO_N3", label: "N3 - Wentylator nawiewu", unit: "%" },
-      { point: "WYJ_AO_W3", label: "W3 - Wentylator wywiewu", unit: "%" },
-      { point: "WYJ_AO_3NE1", label: "3NE1 - Nagrzewnica elektryczna", unit: "%" },
-      { point: "WYJ_AO_3NV1", label: "3NV1 - Zawór / siłownik", unit: "%" }
-    ]
-  }
-]
+      items: [
+        { point: "POMIAR_023_2TE1", label: "023/2TE1 - Temperatura nawiewu", unit: "°C" },
+        { point: "POMIAR_023_2THE1_T", label: "023/2THE1 - Temperatura pomieszczenia", unit: "°C" },
+        { point: "POMIAR_023_2THE1_H", label: "023/2THE1 - Wilgotność pomieszczenia", unit: "%R.H." },
+         { point: "WYJ_AO_023_2NE1", label: "023/2NE1 - Nagrzewnica", unit: "" },
+  { point: "WYJ_AO_023_2NV1", label: "023/2NV1 - Zawór", unit: "%" }
+      ]
     };
   },
 
   mounted() {
-    this.load();
-    this.interval = setInterval(this.load, 5000);
+    this.startAutoRefresh();
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
   },
 
   beforeUnmount() {
-    clearInterval(this.interval);
+    this.stopAutoRefresh();
+    document.removeEventListener("visibilitychange", this.handleVisibilityChange);
   },
 
   methods: {
@@ -101,27 +66,42 @@ sections: [
         }
 
         this.f = values;
-        this.status = `Pobrano aktualne pomiary: ${(r.data || []).length} punktów`;
       } catch (e) {
-        console.error(e);
-        this.status = "Błąd pobierania danych";
+        console.error("Błąd pobierania danych:", e);
       }
     },
 
-getValue(point) {
-  const value = this.f[point];
+    startAutoRefresh() {
+      if (this.interval) return;
 
-  if (value === undefined || value === null || value === "") {
-    return "-";
-  }
+      this.load();
 
-  // cyfrowe → ON/OFF
-  if (point.startsWith("WYJ_DO_")) {
-    return value == 1 ? "ON" : "OFF";
-  }
+      this.interval = setInterval(() => {
+        if (!document.hidden) {
+          this.load();
+        }
+      }, 10000);
+    },
 
-  return value;
-}
+    stopAutoRefresh() {
+      if (!this.interval) return;
+
+      clearInterval(this.interval);
+      this.interval = null;
+    },
+
+    handleVisibilityChange() {
+      if (document.hidden) {
+        this.stopAutoRefresh();
+      } else {
+        this.startAutoRefresh();
+      }
+    },
+
+    getValue(point) {
+      const value = this.f[point];
+      return value === undefined || value === null || value === "" ? "-" : value;
+    }
   }
 };
 </script>
@@ -162,7 +142,7 @@ getValue(point) {
   font-size: 18px;
   font-weight: 700;
   padding: 12px 16px;
-  margin: 24px 0 0;
+  margin: 0;
   border-radius: 8px 8px 0 0;
   border: 1px solid #444;
   border-bottom: none;
@@ -243,12 +223,5 @@ button {
 
 button:hover {
   background: #1f75d6;
-}
-
-.status {
-  margin-left: 14px;
-  font-weight: bold;
-  font-size: 17px;
-  color: #36d156;
 }
 </style>

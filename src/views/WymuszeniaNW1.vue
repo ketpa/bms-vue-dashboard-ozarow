@@ -124,12 +124,23 @@ export default {
       this.status = "OK";
     },
 
-    async send(p){
-      await axios.post(this.api + "/api/nw1-force-setpoint", {
-        point:p,
-        value:this.f[p]
-      });
-      this.status = "SET " + p;
+    async send(point) {
+      try {
+        const savedUser = localStorage.getItem("user");
+        const currentUser = savedUser ? JSON.parse(savedUser) : null;
+
+        await axios.post(this.api + "/api/nw1-force-setpoint", {
+          point,
+          value: this.f[point],
+          user: currentUser?.username || "unknown"
+        });
+
+        this.status = "Zapisano " + point;
+        await this.load();
+      } catch (e) {
+        console.error(e);
+        this.status = "Błąd zapisu " + point;
+      }
     }
   }
 };

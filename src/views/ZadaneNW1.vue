@@ -147,31 +147,37 @@ export default {
       ],
 
       roomPressure: [
-        { point: "t16506", label: "Zadane wysterowanie regulatora ciśn. pom. 019" },
-        { point: "t16507", label: "Zadane wysterowanie regulatora ciśn. pom. 018" },
-        { point: "t16508", label: "Zadane wysterowanie regulatora ciśn. pom. 017" },
-        { point: "t16509", label: "Zadane wysterowanie regulatora ciśn. pom. 020" },
         { point: "t16510", label: "Zadane wysterowanie regulatora ciśn. pom. 03" },
-        { point: "t16511", label: "Zadane wysterowanie regulatora ciśn. pom. 021" },
-        { point: "t16512", label: "Zadane wysterowanie regulatora ciśn. pom. 06" },
-        { point: "t16513", label: "Zadane wysterowanie regulatora ciśn. pom. 024" },
         { point: "t16514", label: "Zadane wysterowanie regulatora ciśn. pom. 04" },
-        { point: "t16515", label: "Zadane wysterowanie regulatora ciśn. pom. 016" },
+        { point: "t16512", label: "Zadane wysterowanie regulatora ciśn. pom. 06" },
         { point: "t16516", label: "Zadane wysterowanie regulatora ciśn. pom. 07" },
+        { point: "t16518", label: "Zadane wysterowanie regulatora ciśn. pom. 013" },
         { point: "t16517", label: "Zadane wysterowanie regulatora ciśn. pom. 015" },
-        { point: "t16518", label: "Zadane wysterowanie regulatora ciśn. pom. 013" }
+        { point: "t16515", label: "Zadane wysterowanie regulatora ciśn. pom. 016" },
+        { point: "t16508", label: "Zadane wysterowanie regulatora ciśn. pom. 017" },
+        { point: "t16507", label: "Zadane wysterowanie regulatora ciśn. pom. 018" },
+        { point: "t16506", label: "Zadane wysterowanie regulatora ciśn. pom. 019" },
+        { point: "t16509", label: "Zadane wysterowanie regulatora ciśn. pom. 020" },
+        { point: "t16511", label: "Zadane wysterowanie regulatora ciśn. pom. 021" },
+        { point: "t16513", label: "Zadane wysterowanie regulatora ciśn. pom. 024" },
+        
+        
+        
+        
+        
       ],
 
       roomTemps: [
+        { point: "t16442", label: "Zadana temperatura pom 03" },
+        { point: "t16460", label: "Zadana temperatura pom 06" },
+        { point: "t16478", label: "Zadana temperatura pom 04" },
+        { point: "t16496", label: "Zadana temperatura pom 07" },
+        { point: "t16487", label: "Zadana temperatura pom 016" },
         { point: "t16424", label: "Zadana temperatura pom 019" },
         { point: "t16433", label: "Zadana temperatura pom 020" },
-        { point: "t16442", label: "Zadana temperatura pom 03" },
         { point: "t16451", label: "Zadana temperatura pom 021" },
-        { point: "t16460", label: "Zadana temperatura pom 06" },
         { point: "t16469", label: "Zadana temperatura pom 024" },
-        { point: "t16478", label: "Zadana temperatura pom 04" },
-        { point: "t16487", label: "Zadana temperatura pom 016" },
-        { point: "t16496", label: "Zadana temperatura pom 07" }
+
       ],
 
       schedule: [
@@ -212,21 +218,24 @@ export default {
       }
     },
 
-    async send(point) {
-      try {
-        await axios.post(this.api + "/api/nw1-zadane-setpoint", {
-          point,
-          value: this.f[point],
-          user: "pawel"
-        });
+async send(point) {
+  try {
+    const savedUser = localStorage.getItem("user");
+    const currentUser = savedUser ? JSON.parse(savedUser) : null;
 
-        this.status = "Zapisano " + point;
-        await this.load();
-      } catch (e) {
-        console.error(e);
-        this.status = "Błąd zapisu " + point;
-      }
-    }
+    await axios.post(this.api + "/api/nw1-zadane-setpoint", {
+      point,
+      value: this.f[point],
+      user: currentUser?.username || "unknown"
+    });
+
+    this.status = "Zapisano " + point;
+    await this.load();
+  } catch (e) {
+    console.error(e);
+    this.status = "Błąd zapisu " + point;
+  }
+}
   }
 };
 </script>
