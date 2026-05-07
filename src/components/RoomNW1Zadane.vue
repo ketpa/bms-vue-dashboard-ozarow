@@ -378,7 +378,7 @@ export default {
         unit: item.unit || "",
         room: this.room,
         user,
-        time: new Date().toISOString()
+        
       };
 
       try {
