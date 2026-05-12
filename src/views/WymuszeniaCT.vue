@@ -2,32 +2,9 @@
   <div class="page">
     <div class="menubottom">PCT &gt; Sterowanie</div>
     <p class="title">Pompy ciepła technologicznego</p>
- <div class="pagebody">
-    <p class="sectiontitle">Praca</p>
-    <table class="table">
-      <tr>
-        <td>PCT - Start pomp ciepła technologicznego</td>
-        <td>
-          <select v-model="f.s10303" disabled>
-            <option value="0">Off</option>
-            <option value="1">On</option>
-          </select>
-        </td>
-      </tr>
-    </table>
-<!--
-    <p class="sectiontitle">Alarmy</p>
-    <table class="table">
-      <tr>
-        <td>PCT - Pompy ciepła technologicznego</td>
-        <td>
-          <select v-model="f.s09019" disabled>
-            <option value="0">OK</option>
-            <option value="1">Alarm</option>
-          </select>
-        </td>
-      </tr>
-    </table>
+
+
+
 
     <p class="sectiontitle">Wymuszenia</p>
     <table class="table">
@@ -52,13 +29,12 @@
           <button @click="send('s09241')">Zapisz</button>
         </td>
       </tr>
-    </table>-->
+    </table>
 
     <div class="bottom-bar">
       <button @click="load">Odśwież</button>
       <span>{{ status }}</span>
     </div>
-  </div>
   </div>
 </template>
 
@@ -261,22 +237,5 @@ button:hover {
   font-weight: bold;
   font-size: 17px;
   color: #36d156;
-}
-select {
-  min-width: 120px;
-  padding: 8px 10px;
-  background: #f5f6fa;
-  color: #111;
-  border-radius: 6px;
-  border: 1px solid #aaa;
-  font-size: 15px;
-  box-sizing: border-box;
-  font-weight: 700;
-}
-
-select:disabled {
-  opacity: 1;
-  color: #111;
-  background: #f5f6fa;
 }
 </style>

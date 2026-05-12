@@ -41,42 +41,15 @@ export default {
 
 sections: [
 
-  {
-    title: "Temperatury",
-    items: [
-      {
-        point: "POMIAR_3TE1",
-        label: "3TE1 - Czujnik temperatury nawiewu",
-        unit: "°C"
-      },
-      {
-        point: "POMIAR_3TE2",
-        label: "3TE2 - Czujnik temperatury wywiewu",
-        unit: "°C"
-      },
-      {
-        point: "POMIAR_3TE3",
-        label: "3TE3 - Czujnik temperatury wymiennika krzyżowego",
-        unit: "°C"
-      }
-    ]
-  },
+
   {
     title: "Wyjścia cyfrowe",
     items: [
-      { point: "WYJ_DO_NW3", label: "Start układu wentylatora NW3", unit: "" },
+     
       { point: "WYJ_DO_W4", label: "Start układu wentylatora W4", unit: "" }
     ]
   },
-  {
-    title: "Wyjścia analogowe",
-    items: [
-      { point: "WYJ_AO_N3", label: "Wysterowanie wentylatora N3", unit: "%" },
-      { point: "WYJ_AO_W3", label: "Wysterowanie wentylatora W3", unit: "%" },
-      { point: "WYJ_AO_3NE1", label: "Wysterowanie nagrzewnicy NW3", unit: "%" },
-      { point: "WYJ_AO_3NV1", label: "3NV1 - Siłownik wymiennika krzyżowego", unit: "%" }
-    ]
-  }
+
 ]
     };
   },

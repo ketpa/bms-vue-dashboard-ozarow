@@ -15,7 +15,7 @@
           <img src="@/assets/img/Nagrzewnica_elektryczna_poz.gif" style="position:absolute; top:133px; left: 95px;">
         </div>
         <div id="POMIAR_3TE1" style="top:219px; left:106px;">
-          <span class="lowered" >{{ points.POMIAR_3TE1 }}°C</span>
+          <span class="lowered" >{{ points.POMIAR_03TE1 }}°C</span>
         </div>
         <div id="POMIAR_03THE1_T" style="top:381px; left:406px;">
           <span class="lowered">{{ points.POMIAR_03THE1_T }}°C</span>

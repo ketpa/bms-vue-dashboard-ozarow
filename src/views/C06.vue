@@ -20,10 +20,13 @@
           <span class="lowered">{{ points.POMIAR_06THE1_H }}%</span>
         </div>
         <div id="WYJ_DO_WD2" style="position:absolute; top:72px; left: 639px;" >
-          <span class="lowered">{{ points.WYJ_DO_WD1 ? 'ON' : 'OFF' }}</span>
+          <span class="lowered">{{ points.WYJ_DO_WD2? 'ON' : 'OFF' }}</span>
         </div>
         <div id="SYGN_06PJ1_img" v-if="points.SYGN_06PJ1 === 1">
           <img src="@/assets/img/Filtr_lewy_brudny_pion.gif" style="position:absolute; top:274px; left: 96px;">
+        </div>
+         <div id="SYGN_06PJ1">
+          <span class="lowered">{{ points.SYGN_06PJ1 ? 'brudny' : 'czysty' }}</span>
         </div>
   
       </div>

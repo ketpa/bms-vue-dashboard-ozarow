@@ -100,15 +100,11 @@ export default {
       { label: "024NE1", enable: "s09221", value: "t09237", type: "percent" },
       { label: "04NE1", enable: "s09222", value: "t09238", type: "percent" },
       { label: "016NE1", enable: "s09223", value: "t09239", type: "percent" },
-      { label: "07NE1", enable: "s09224", value: "t09240", type: "percent" }
+      { label: "07NE1", enable: "s09224", value: "t09240", type: "percent" },
+      
     ]
   },
-  {
-    section: "Pompa ciepła technologicznego",
-    items: [
-      { label: "PCT", enable: "s09225", value: "t09241", type: "percent" }
-    ]
-  }
+
 ]
     };
   },

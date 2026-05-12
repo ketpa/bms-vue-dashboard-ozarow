@@ -4,12 +4,17 @@
         <ul></ul>
         <div id="punkty"></div>
   
-        <div id="WYJ_DO_W4" style="top:68px; left:373px;">
-          <span class="lowered">{{ points.WYJ_DO_W4 ? 'ON' : 'OFF' }}</span>
-        </div>
-        <div id="POMIAR_1_6TE1" style="top:243px; left:415px;">
-          <span class="lowered">{{ points.POMIAR_1_6TE1 }}°C</span>
-        </div>
+<div id="WYJ_DO_WD5" style="top:68px; left:373px;">
+  <span class="lowered">
+    {{ Number(points.WYJ_DO_WD5) === 1 ? 'ON' : 'OFF' }}
+  </span>
+</div>
+
+<div id="POMIAR_1_6TE1" style="top:243px; left:415px;">
+  <span class="lowered">
+    {{ points.POMIAR_1_6TE1 ?? '---' }}°C
+  </span>
+</div>
       </div>
     </div>
   </template>
@@ -40,20 +45,19 @@ export default {
 
   methods: {
     fetchData() {
-      axios.get('http://192.168.1.155:1880/C1.json') //
-        .then(response => {
-          const updatedPoints = {};
+  axios.get('http://192.168.1.155:1880/api/wentylatornia-values')
+    .then(response => {
+      const data = response.data.values || {};
 
-          response.data.forEach(item => {
-            updatedPoints[item.Name] = item.Value;
-          });
-
-          this.points = updatedPoints;
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
-    },
+      this.points = {
+        POMIAR_1_6TE1: data.t09059?.value,
+        WYJ_DO_WD5: data.s09083?.value
+      };
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+},
 
     startAutoRefresh() {
       if (this.intervalId) return;
@@ -83,4 +87,16 @@ export default {
   }
 };
 </script>
+<style scoped>
+#WYJ_DO_WD5,
+#POMIAR_1_6TE1 {
+  position: absolute;
+}
+
+#WYJ_DO_WD5 .lowered,
+#POMIAR_1_6TE1 .lowered {
+  position: relative;
+  top: 14px;
+}
+</style>
   

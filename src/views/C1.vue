@@ -121,7 +121,7 @@
         <span class="lowered">{{ points.POMIAR_1PE3 }} Pa</span>
       </div>
       <div id="POMIAR_1THE1_X">
-        <span class="lowered">{{ points.POMIAR_1THE1_X }}</span>
+        <span class="lowered">{{ points.POMIAR_1THE1_X }} g/kg</span>
       </div>
       <div id="POMIAR_0TE1">
         <span class="lowered" >{{ points.POMIAR_0TE1 }}°C</span>
@@ -143,7 +143,7 @@
         <img src="@/assets/img/Wentylator_prawy_praca.gif" style="position:absolute; top:24px; left: 304px;">
       </div>
       <div id="slonce" style="position:absolute; top:1px; left: 1018px;"></div>
-      <div id="SAP" class="lowered" style="font-size:32px">{{ points.SAP }}</div>
+     <!-- <div id="SAP" class="lowered" style="font-size:32px">{{ points.SAP }}</div>-->
     </div>
   </div>
 </template>

@@ -147,6 +147,18 @@ const roomForces = {
           point: "t09236",
           label: "Wartość wymuszenia 06NE1",
           unit: "%"
+        },
+         {
+          point: "s09197",
+          label: "Załączenie wymuszenia WD2",
+          type: "select",
+          unit: "",
+          options: autoManualOptions
+        },
+        {
+          point: "s09213",
+          label: "Wartość wymuszenia WD2",
+          unit: "%"
         }
       ]
     }

@@ -2,63 +2,28 @@
   <div class="page">
     <div class="menubottom">PCT &gt; Sterowanie</div>
     <p class="title">Pompy ciepła technologicznego</p>
- <div class="pagebody">
-    <p class="sectiontitle">Praca</p>
-    <table class="table">
-      <tr>
-        <td>PCT - Start pomp ciepła technologicznego</td>
-        <td>
-          <select v-model="f.s10303" disabled>
-            <option value="0">Off</option>
-            <option value="1">On</option>
-          </select>
-        </td>
-      </tr>
-    </table>
-<!--
+
+
     <p class="sectiontitle">Alarmy</p>
     <table class="table">
       <tr>
         <td>PCT - Pompy ciepła technologicznego</td>
-        <td>
-          <select v-model="f.s09019" disabled>
-            <option value="0">OK</option>
-            <option value="1">Alarm</option>
-          </select>
-        </td>
+                    <td>
+                <span
+                    :class="f.s09019 == '1' ? 'alarm-box' : 'ok-box'"
+                >
+                    {{ f.s09019 == "1" ? "ALARM" : "OK" }}
+                </span>
+                </td>
       </tr>
     </table>
 
-    <p class="sectiontitle">Wymuszenia</p>
-    <table class="table">
-      <tr>
-        <td>Załączenie wymuszenia PCT</td>
-        <td>
-          <select v-model="f.s09225">
-            <option value="0">Off</option>
-            <option value="1">On</option>
-          </select>
-          <button @click="send('s09225')">Zapisz</button>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Wartość wymuszenia PCT</td>
-        <td>
-          <select v-model="f.s09241">
-            <option value="0">Off</option>
-            <option value="1">On</option>
-          </select>
-          <button @click="send('s09241')">Zapisz</button>
-        </td>
-      </tr>
-    </table>-->
+  
 
     <div class="bottom-bar">
       <button @click="load">Odśwież</button>
       <span>{{ status }}</span>
     </div>
-  </div>
   </div>
 </template>
 
@@ -278,5 +243,24 @@ select:disabled {
   opacity: 1;
   color: #111;
   background: #f5f6fa;
+}
+.ok-box,
+.alarm-box {
+  display: inline-block;
+  min-width: 110px;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+}
+
+.ok-box {
+  background: #2f8f2f;
+}
+
+.alarm-box {
+  background: #d92929;
 }
 </style>

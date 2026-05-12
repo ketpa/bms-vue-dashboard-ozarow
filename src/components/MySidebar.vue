@@ -1,6 +1,6 @@
 <template>
   <nav class="sidebar">
-    <div class="logo">📊 MyDashboard</div>
+    <div class="logo">📊 BMS</div>
 
     <div v-if="currentUser" class="user-box">
       <div><b>Zalogowany:</b> {{ currentUser.username }}</div>
@@ -57,7 +57,10 @@ export default {
           showSubMenu: false,
           subMenuItems: [
             { id: 21, name: "Rysunek", link: "/C0" },
-            { id: 22, name: "Tabela", link: "/PomiarCT" }
+            { id: 22, name: "Tabela", link: "/PomiarCT" },
+            { id: 24, name: "Alarmy", link: "/AwarieCT" },
+            { id: 23, name: "Wymuszenia", link: "/WymuszeniaCT" },
+           
           ]
         },
         {
@@ -71,7 +74,8 @@ export default {
             { id: 32, name: "Tabela", link: "/PomiarNW1" },
             { id: 33, name: "Wyjscia", link: "/WyjsciaNW1" },
             { id: 34, name: "Zadane", link: "/ZadaneNW1" },
-            { id: 35, name: "Wymuszenia", link: "/WymuszeniaNW1" }
+            { id: 35, name: "Wymuszenia", link: "/WymuszeniaNW1" },
+            { id: 36, name: "Alarmy", link: "/AlarmyNW1/1" }
           ]
         },
         {
@@ -85,7 +89,8 @@ export default {
             { id: 42, name: "Tabela", link: "/PomiarNW2" },
             { id: 43, name: "Wyjscia", link: "/WyjsciaNW2" },
             { id: 44, name: "Zadane", link: "/ZadaneNW2" },
-            { id: 45, name: "Wymuszenia", link: "/WymuszeniaNW2" }
+            { id: 45, name: "Wymuszenia", link: "/WymuszeniaNW2" },
+            { id: 50, name: "Alarmy", link: "/AlarmyNW2" },
           ]
         },
         {
@@ -98,7 +103,8 @@ export default {
             { id: 51, name: "Rysunek", link: "/C3" },
             { id: 52, name: "Tabela", link: "/PomiarNW3" },
             { id: 53, name: "Zadane", link: "/ZadaneNW3W4" },
-            { id: 54, name: "Wymuszenia", link: "/WymuszeniaNW3W4" }
+            { id: 54, name: "Wymuszenia", link: "/WymuszeniaNW3W4" },
+            { id: 301, name: "Alarmy", link: "/AlarmyNW3" },
           ]
         },
         {
@@ -109,7 +115,9 @@ export default {
           showSubMenu: false,
           subMenuItems: [
             { id: 61, name: "Rysunek", link: "/C4" },
-            { id: 62, name: "Tabela", link: "/C1" }
+            { id: 62, name: "Tabela", link: "/PomiarW4" },
+            { id: 63, name: "Wymuszenia", link: "/WymuszeniaW4" },
+            { id: 301, name: "Alarmy", link: "/AlarmyW4" },
           ]
         },
         {
@@ -121,7 +129,8 @@ export default {
           subMenuItems: [
             { id: 71, name: "Rysunek", link: "/C13" },
             { id: 72, name: "Pomieszczenie", link: "/NW1/P013" },
-            { id: 73, name: "Zadane", link: "/NW1/P013/zadane" }
+            { id: 73, name: "Zadane", link: "/NW1/P013/zadane" },
+            { id: 49, name: "Alarmy", link: "/AlarmyNW1/013" },
           ]
         },
         {
@@ -133,7 +142,8 @@ export default {
           subMenuItems: [
             { id: 81, name: "Rysunek", link: "/C15" },
             { id: 82, name: "Pomieszczenie", link: "/NW1/P015" },
-            { id: 83, name: "Zadane", link: "/NW1/P015/zadane" }
+            { id: 83, name: "Zadane", link: "/NW1/P015/zadane" },
+            { id: 48, name: "Alarmy", link: "/AlarmyNW1/015" },
           ]
         },
         {
@@ -145,7 +155,9 @@ export default {
           subMenuItems: [
             { id: 91, name: "Rysunek", link: "/C16" },
             { id: 92, name: "Pomieszczenie", link: "/NW1/P016" },
-            { id: 93, name: "Zadane", link: "/NW1/P016/zadane" }
+            { id: 93, name: "Zadane", link: "/NW1/P016/zadane" },
+            { id: 130, name: "Wymuszenia", link: "/NW1/P016/wymuszenia" },
+            { id: 42, name: "Alarmy", link: "/AlarmyNW1/016" },
           ]
         },
         {
@@ -157,7 +169,8 @@ export default {
           subMenuItems: [
             { id: 101, name: "Rysunek", link: "/C17" },
             { id: 102, name: "Pomieszczenie", link: "/NW1/P017" },
-            { id: 103, name: "Zadane", link: "/NW1/P017/zadane" }
+            { id: 103, name: "Zadane", link: "/NW1/P017/zadane" },
+            { id: 47, name: "Alarmy 017", link: "/AlarmyNW1/017" },
           ]
         },
         {
@@ -169,7 +182,8 @@ export default {
           subMenuItems: [
             { id: 111, name: "Rysunek", link: "/C18" },
             { id: 112, name: "Pomieszczenie", link: "/NW1/P018" },
-            { id: 113, name: "Zadane", link: "/NW1/P018/zadane" }
+            { id: 113, name: "Zadane", link: "/NW1/P018/zadane" },
+            { id: 46, name: "Alarmy", link: "/AlarmyNW1/018" },
           ]
         },
         {
@@ -182,7 +196,8 @@ export default {
             { id: 121, name: "Rysunek", link: "/C19" },
             { id: 122, name: "Pomieszczenie", link: "/NW1/P019" },
             { id: 123, name: "Zadane", link: "/NW1/P019/zadane" },
-            { id: 123, name: "Wymuszenia", link: "/NW1/P019/wymuszenia" }
+            { id: 124, name: "Wymuszenia", link: "/NW1/P019/wymuszenia" },
+            { id: 37, name: "Alarmy", link: "/AlarmyNW1/019" },
           ]
         },
         {
@@ -194,7 +209,9 @@ export default {
           subMenuItems: [
             { id: 131, name: "Rysunek", link: "/C20" },
             { id: 132, name: "Pomieszczenie", link: "/NW1/P020" },
-            { id: 133, name: "Zadane", link: "/NW1/P020/zadane" }
+            { id: 133, name: "Zadane", link: "/NW1/P020/zadane" },
+            { id: 124, name: "Wymuszenia", link: "/NW1/P020/wymuszenia" },
+            { id: 38, name: "Alarmy", link: "/AlarmyNW1/020" },
           ]
         },
         {
@@ -206,7 +223,9 @@ export default {
           subMenuItems: [
             { id: 141, name: "Rysunek", link: "/C21" },
             { id: 142, name: "Pomieszczenie", link: "/NW1/P021" },
-            { id: 143, name: "Zadane", link: "/NW1/P021/zadane" }
+            { id: 143, name: "Zadane", link: "/NW1/P021/zadane" },
+            { id: 126, name: "Wymuszenia", link: "/NW1/P021/wymuszenia" },
+            { id: 40, name: "Alarmy", link: "/AlarmyNW1/021" },
           ]
         },
         {
@@ -217,8 +236,7 @@ export default {
           showSubMenu: false,
           subMenuItems: [
             { id: 151, name: "Rysunek", link: "/C22a" },
-            { id: 152, name: "Pomieszczenie", link: "/NW1/P022a" },
-            { id: 153, name: "Zadane", link: "/NW1/P022a/zadane" }
+            { id: 162, name: "Zadane", link: "/Zadane22a" },
           ]
         },
         {
@@ -230,7 +248,7 @@ export default {
           subMenuItems: [
             { id: 161, name: "Rysunek", link: "/C23" },
             { id: 162, name: "Pomieszczenie", link: "/Pomieszczenie023_2" },
-            { id: 163, name: "Zadane", link: "/NW1/P023_2/zadane" }
+            { id: 163, name: "Zadane", link: "/Zadane23" }
           ]
         },
         {
@@ -242,7 +260,9 @@ export default {
           subMenuItems: [
             { id: 171, name: "Rysunek", link: "/C24" },
             { id: 172, name: "Pomieszczenie", link: "/NW1/P024" },
-            { id: 173, name: "Zadane", link: "/NW1/P024/zadane" }
+            { id: 173, name: "Zadane", link: "/NW1/P024/zadane" },
+            { id: 128, name: "Wymuszenia", link: "/NW1/P024/wymuszenia" },
+            { id: 41, name: "Alarmy", link: "/AlarmyNW1/024" },
           ]
         },
         {
@@ -254,7 +274,9 @@ export default {
           subMenuItems: [
             { id: 181, name: "Rysunek", link: "/C03" },
             { id: 182, name: "Pomieszczenie", link: "/NW1/P03" },
-            { id: 183, name: "Zadane", link: "/NW1/P03/zadane" }
+            { id: 183, name: "Zadane", link: "/NW1/P03/zadane" },
+            { id: 125, name: "Wymuszenia",  link: "/NW1/P03/wymuszenia" },
+            { id: 39, name: "Alarmy", link: "/AlarmyNW1/03" },
           ]
         },
         {
@@ -266,7 +288,9 @@ export default {
           subMenuItems: [
             { id: 191, name: "Rysunek", link: "/C04" },
             { id: 192, name: "Pomieszczenie", link: "/NW1/P04" },
-            { id: 193, name: "Zadane", link: "/NW1/P04/zadane" }
+            { id: 193, name: "Zadane", link: "/NW1/P04/zadane" },
+            { id: 129, name: "Wymuszenia",  link: "/NW1/P04/wymuszenia" },
+            { id: 44, name: "Alarmy", link: "/AlarmyNW1/04" },
           ]
         },
         {
@@ -278,7 +302,9 @@ export default {
           subMenuItems: [
             { id: 201, name: "Rysunek", link: "/C06" },
             { id: 202, name: "Pomieszczenie", link: "/NW1/P06" },
-            { id: 203, name: "Zadane", link: "/NW1/P06/zadane" }
+            { id: 203, name: "Zadane", link: "/NW1/P06/zadane" },
+            { id: 127, name: "Wymuszenia",  link: "/NW1/P06/wymuszenia" },
+            { id: 43, name: "Alarmy", link: "/AlarmyNW1/06" },
           ]
         },
         {
@@ -290,7 +316,9 @@ export default {
           subMenuItems: [
             { id: 211, name: "Rysunek", link: "/C07" },
             { id: 212, name: "Pomieszczenie", link: "/NW1/P07" },
-            { id: 213, name: "Zadane", link: "/NW1/P07/zadane" }
+            { id: 213, name: "Zadane", link: "/NW1/P07/zadane" },
+            { id: 131, name: "Wymuszenia",  link: "/NW1/P07/wymuszenia" },
+            { id: 45, name: "Alarmy", link: "/AlarmyNW1/07" },
           ]
         },
         {
@@ -301,10 +329,9 @@ export default {
           showSubMenu: false,
           subMenuItems: [
             { id: 221, name: "Rysunek", link: "/C1_6" },
-            { id: 222, name: "Pomieszczenie", link: "/NW1/P1_6" },
-            { id: 222, name: "SAK1", link: "/SAK1" },
             { id: 222, name: "Wentylatornia", link: "/Wentylatornia" },
-            { id: 223, name: "Zadane", link: "/NW1/P1_6/zadane" }
+            { id: 222, name: "SAK1", link: "/SAK1" },
+            
           ]
         },
         {
@@ -315,7 +342,7 @@ export default {
           showSubMenu: false,
           subMenuItems: [
             { id: 231, name: "Rysunek", link: "/CH1" },
-            { id: 232, name: "Tabela", link: "/C1" },
+            { id: 232, name: "Tabela", link: "/TabelkaCH1" },
             { id: 233, name: "Wymuszenia", link: "/WymuszeniaChiller" }
           ]
         },
@@ -327,18 +354,18 @@ export default {
           showSubMenu: false,
           subMenuItems: [
             { id: 241, name: "Rysunek", link: "/CH2" },
-            { id: 242, name: "Tabela", link: "/C1" }
+            { id: 242, name: "Tabela", link: "/TabelkaCH2" }
           ]
         },
         {
           id: 25,
           name: "Alarmy",
           icon: "🚨",
-          link: "/ct",
+          link: "/Alarmy",
           showSubMenu: false,
           subMenuItems: [
-            { id: 251, name: "Rysunek", link: "/ct/rysunek" },
-            { id: 252, name: "Tabela", link: "/C1" }
+            { id: 251, name: "Tabela", link: "/Alarmy" },
+           
           ]
         },
         {
@@ -391,8 +418,8 @@ export default {
     levelName(level) {
       const l = Number(level);
 
-      if (l === 1) return "Kierownik";
-      if (l === 2) return "Użytkownik";
+      if (l === 1) return "Użytkownik";
+      if (l === 2) return "Operator";
       if (l === 3) return "Admin";
 
       return level;

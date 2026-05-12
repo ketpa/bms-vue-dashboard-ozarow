@@ -13,12 +13,22 @@ import RoomNW1Wymuszenia from "@/components/RoomNW1Wymuszenia.vue";
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: HomeView,
     sidebar: MySidebar   // Sidebar pozostaje bez zmian
   },
+  {
+    path: '/',
+    name: 'Parter',
+    component: () => import('../views/Parter.vue')
+  },
     {
+    path: '/Alarmy',
+    name: 'Alarmy',
+    component: () => import('../views/Alarmy.vue')
+  },
+      {
     path: "/login",
     name: "Login",
     component: LoginView
@@ -26,7 +36,8 @@ const routes = [
   {
     path: "/users",
     name: "users",
-    component: UsersView
+    component: UsersView,
+    meta: { level: 3 }
   },
   {
     path: '/about',
@@ -62,6 +73,17 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/PomiarCT.vue')
+  },
+  {
+    path: '/WymuszeniaCT',
+    name: 'WymuszeniaCT',
+    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaCT.vue'),
+    meta: { level: 2 }
+  },
+  {
+    path: '/AwarieCT',
+    name: 'AwarieCT',
+    component: () => import(/* webpackChunkName: "about" */ '../views/AwarieCT.vue')
   },
           {
     path: '/SAK1',
@@ -232,6 +254,22 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/CH1.vue')
   },
   {
+    path: '/TabelkaCH1',
+    name: 'TabelkaCH1',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/TabelkaCH1.vue')
+  },
+  {
+    path: '/TabelkaCH2',
+    name: 'TabelkaCH2',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/TabelkaCH2.vue')
+  },
+  {
     path: '/CH2',
     name: 'CH2',
     // route level code-splitting
@@ -245,7 +283,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ZadaneNW3W4.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/ZadaneNW3W4.vue'),
+    meta: { level: 2 }
   },
       {
     path: '/ZadaneNW2',
@@ -253,15 +292,35 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ZadaneNW2.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/ZadaneNW2.vue'),
+    meta: { level: 2 }
+  },{
+    path: '/Zadane22a',
+    name: 'Zadane22a',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Zadane22a.vue'),
+    meta: { level: 2 }
   },
+  {
+    path: '/Zadane23',
+    name: 'Zadane23',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Zadane23.vue'),
+    meta: { level: 2 }
+  },
+
         {
     path: '/ZadaneNW1',
     name: 'ZadaneNW1',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ZadaneNW1.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/ZadaneNW1.vue'),
+    meta: { level: 2 }
   },
   {
     path: '/WymuszeniaNW2',
@@ -269,15 +328,27 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaNW2')
+    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaNW2'),
+    meta: { level: 2 }
   },
+  
     {
     path: '/WymuszeniaNW3W4',
     name: 'WymuszeniaNW3W4',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaNW3W4')
+    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaNW3W4'),
+    meta: { level: 2 }
+  },
+    {
+    path: '/WymuszeniaW4',
+    name: 'WymuszeniaW4',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaW4'),
+    meta: { level: 2 }
   },
     {
     path: '/WymuszeniaNW1',
@@ -285,7 +356,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaNW1')
+    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaNW1'),
+    meta: { level: 2 }
   },
    {
     path: '/WymuszeniaChiller',
@@ -293,7 +365,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaChiller')
+    component: () => import(/* webpackChunkName: "about" */ '../views/WymuszeniaChiller'),
+    meta: { level: 2 }
   },
      {
     path: '/PomiarNW1',
@@ -318,6 +391,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/PomiarNW3')
+  },
+  {
+    path: '/PomiarW4',
+    name: 'PomiarW4',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/PomiarW4')
   },
   {
     path: '/Wentylatornia',
@@ -374,6 +455,26 @@ const routes = [
   name: "RoomNW1Wymuszenia",
   component: RoomNW1Wymuszenia
 },
+{
+  path: "/AlarmyNW1/:group",
+  name: "AlarmyNW1",
+  component: () => import("../components/AlarmyNW1.vue")
+},
+{
+  path: "/AlarmyNW2",
+  name: "AlarmyNW2",
+  component: () => import("../components/AlarmyNW2.vue")
+},
+{
+  path: "/AlarmyNW3",
+  name: "AlarmyNW3",
+  component: () => import("../components/AlarmyNW3.vue")
+},
+{
+  path: "/AlarmyW4",
+  name: "AlarmyW4",
+  component: () => import("../components/AlarmyW4.vue")
+}
 ]
 
 const router = createRouter({

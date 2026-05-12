@@ -71,7 +71,8 @@ const roomMap = {
   { point: "POMIAR_016THE1_T", label: "016THE1 - Temperatura pomieszczenia", unit: "°C" },
   { point: "POMIAR_016THE1_H", label: "016THE1 - Wilgotność pomieszczenia", unit: "%R.H." },
   { point: "WYJ_AO_016NE1", label: "016NE1 - Wysterowanie nagrzewnicy", unit: "%" },
-  { point: "WYJ_AO_016NV1", label: "016NV1 - Regulator ciśnienia", unit: "%" }
+  { point: "WYJ_AO_016NV1", label: "016NV1 - Regulator ciśnienia", unit: "%" },
+  
 ],
 
 "06": [
@@ -79,7 +80,8 @@ const roomMap = {
   { point: "POMIAR_06THE1_T", label: "06THE1 - Temperatura pomieszczenia", unit: "°C" },
   { point: "POMIAR_06THE1_H", label: "06THE1 - Wilgotność pomieszczenia", unit: "%R.H." },
   { point: "WYJ_AO_06NE1", label: "06NE1 - Wysterowanie nagrzewnicy", unit: "%" },
-  { point: "WYJ_AO_06NV1", label: "06NV1 - Regulator ciśnienia", unit: "%" }
+  { point: "WYJ_AO_06NV1", label: "06NV1 - Regulator ciśnienia", unit: "%" },
+  { point: "WYJ_DO_WD2", label: "WD2 - Wysterowanie", unit: "%" }
 ],
 
 "04": [

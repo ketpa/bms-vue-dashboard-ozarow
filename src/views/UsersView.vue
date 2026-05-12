@@ -47,8 +47,9 @@
           <input v-model="newUser.password" type="password" placeholder="Hasło" />
 
           <select v-model="newUser.level">
-            <option value="1">Kierownik</option>
-            <option value="2">Użytkownik Standardowy</option>
+          
+            <option value="1">Użytkownik</option>
+            <option value="2">Operator</option>
             <option value="3">Admin</option>
           </select>
 
@@ -93,8 +94,8 @@ export default {
 
     levelName(level) {
       const l = Number(level);
-      if (l === 1) return "Kierownik";
-      if (l === 2) return "Użytkownik Standardowy";
+      if (l === 1) return "Użytkownik";
+      if (l === 2) return "Operator";
       if (l === 3) return "Admin";
       return level;
     },
