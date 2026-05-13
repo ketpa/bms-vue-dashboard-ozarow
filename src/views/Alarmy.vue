@@ -28,17 +28,15 @@
 
       <tbody>
         <tr
-          v-for="alarm in filteredActive"
+          v-for="alarm in pagedActive"
           :key="alarm.id"
           :class="{ acceptedRow: Number(alarm.accept) === 1 }"
         >
           <td>{{ alarm.name }}</td>
           <td class="date-col">{{ alarm.date }}</td>
-
           <td class="value-col" :class="getValueClass(alarm.value)">
             {{ alarm.value }}
           </td>
-
           <td>{{ alarm.default_value ?? alarm.default }}</td>
           <td class="accept-col">{{ alarm.accept }}</td>
           <td>{{ alarm.accepted_user || "-" }}</td>
@@ -61,7 +59,12 @@
         </tr>
       </tbody>
     </table>
-   
+
+    <div class="pagination" v-if="activePages > 1">
+      <button @click="activePage--" :disabled="activePage <= 1">◀</button>
+      <span>Strona {{ activePage }} / {{ activePages }}</span>
+      <button @click="activePage++" :disabled="activePage >= activePages">▶</button>
+    </div>
 
     <p class="title">Tabela alarmów historycznych</p>
 
@@ -84,18 +87,16 @@
 
       <tbody>
         <tr
-          v-for="alarm in filteredHistory"
+          v-for="alarm in pagedHistory"
           :key="alarm.id"
           :class="{ acceptedRow: Number(alarm.accept) === 1 }"
         >
           <td>{{ alarm.name }}</td>
           <td class="date-col">{{ alarm.date }}</td>
           <td class="date-col">{{ alarm.end_date || "-" }}</td>
-
           <td class="value-col" :class="getValueClass(alarm.value)">
             {{ alarm.value }}
           </td>
-
           <td class="accept-col">{{ alarm.accept }}</td>
           <td>{{ alarm.accepted_user || "-" }}</td>
           <td class="date-col">{{ alarm.accepted_date || "-" }}</td>
@@ -117,6 +118,12 @@
         </tr>
       </tbody>
     </table>
+
+    <div class="pagination" v-if="historyPages > 1">
+      <button @click="historyPage--" :disabled="historyPage <= 1">◀</button>
+      <span>Strona {{ historyPage }} / {{ historyPages }}</span>
+      <button @click="historyPage++" :disabled="historyPage >= historyPages">▶</button>
+    </div>
 
     <div class="status">{{ status }}</div>
   </div>
@@ -260,12 +267,11 @@ historyPages() {
 .page {
   min-height: 100vh;
   padding: 20px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(35,35,35,0.96) 0%,
-      rgba(55,55,55,0.92) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(35,35,35,0.96) 0%,
+    rgba(55,55,55,0.92) 100%
+  );
   color: #f2f2f2;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -372,14 +378,8 @@ historyPages() {
   text-align: center;
 }
 
-.acceptedRow td {
-  color: #9a9a9a !important;
-}
-
-.acceptedRow .value-col {
-  color: #9a9a9a !important;
-}
-
+.acceptedRow td,
+.acceptedRow .value-col,
 .acceptedRow .status-alarm,
 .acceptedRow .status-ok,
 .acceptedRow .status-warning {
@@ -439,6 +439,37 @@ historyPages() {
   font-style: italic;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 35px;
+}
+
+.pagination span {
+  color: #ddd;
+  font-size: 14px;
+}
+
+.pagination button {
+  background: #2d6cdf;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background: #4d84e8;
+}
+
+.pagination button:disabled {
+  background: #555;
+  cursor: default;
+}
+
 .status {
   margin-top: 15px;
   font-weight: bold;
@@ -459,20 +490,4 @@ historyPages() {
     width: 160px;
   }
 }
-.table-scroll {
-  max-height: 760px; /* około 20 wierszy */
-  overflow-y: auto;
-  overflow-x: auto;
-  border: 1px solid #444;
-  border-radius: 4px;
-  margin-bottom: 35px;
-}
-
-/* nagłówek zostaje na górze przy przewijaniu */
-.table-scroll thead th {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-}
-
 </style>

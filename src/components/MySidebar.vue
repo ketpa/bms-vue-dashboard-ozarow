@@ -10,15 +10,36 @@
 
     <ul>
       <li v-for="item in menuItems" :key="item.id + '-' + item.name">
-        <router-link
-          :to="item.link"
-          class="menu-item"
-          @click.prevent="toggleSubMenu(item.id, item.name)"
-        >
-          <span class="icon">{{ item.icon }}</span>
-          <span class="text">{{ item.name }}</span>
-          <span class="arrow" :class="{ open: item.showSubMenu }">▼</span>
-        </router-link>
+<!-- LINK ZEWNĘTRZNY -->
+<a
+  v-if="item.external"
+  :href="item.link"
+  target="_blank"
+  rel="noopener"
+  class="menu-item"
+>
+  <span class="icon">{{ item.icon }}</span>
+  <span class="text">{{ item.name }}</span>
+</a>
+
+<!-- NORMALNY ROUTER -->
+<router-link
+  v-else
+  :to="item.link"
+  class="menu-item"
+  @click.prevent="toggleSubMenu(item.id, item.name)"
+>
+  <span class="icon">{{ item.icon }}</span>
+  <span class="text">{{ item.name }}</span>
+
+  <span
+    v-if="item.subMenuItems && item.subMenuItems.length"
+    class="arrow"
+    :class="{ open: item.showSubMenu }"
+  >
+    ▼
+  </span>
+</router-link>
 
         <ul v-if="item.showSubMenu" class="submenu">
           <li v-for="subItem in item.subMenuItems" :key="subItem.id + '-' + subItem.name">
@@ -372,14 +393,24 @@ export default {
           id: 26,
           name: "Grafana",
           icon: "📈",
-          link: "/ct",
+          link: "http://192.168.1.155:3000",
+          external: true,
           showSubMenu: false,
-          subMenuItems: [
-            { id: 261, name: "Rysunek", link: "/ct/rysunek" },
-            { id: 262, name: "Tabela", link: "/C1" }
-          ]
+          subMenuItems: []
         },
         {
+          id: 28,
+          name: "UPS",
+          icon: "📈",
+          link: "/UPS",
+          showSubMenu: false,
+          subMenuItems: [
+            { id: 261, name: "UPS", link: "UPS" },
+            { id: 262, name: "UPSWhutDown", link: "/UpsShutdown" },
+            
+          ]
+        },
+             {
           id: 27,
           name: "Users",
           icon: "👥",

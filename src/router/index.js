@@ -8,6 +8,7 @@ import LoginView from "../views/LoginView.vue";
 import UsersView from "../views/UsersView.vue";
 import RoomNW1Zadane from "@/components/RoomNW1Zadane.vue";
 import RoomNW1Wymuszenia from "@/components/RoomNW1Wymuszenia.vue";
+import UpsShutdown from '@/views/UpsShutdown.vue';
 
 
 
@@ -474,6 +475,17 @@ const routes = [
   path: "/AlarmyW4",
   name: "AlarmyW4",
   component: () => import("../components/AlarmyW4.vue")
+},
+{
+  path: "/UPS",
+  name: "UPS",
+  component: () => import("../views/UPS.vue")
+},
+{
+  path: '/UpsShutdown',
+  name: 'UpsShutdown',
+  component: UpsShutdown,
+  meta: { level: 2 }
 }
 ]
 
