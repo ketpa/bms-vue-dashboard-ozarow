@@ -401,7 +401,7 @@ export default {
         {
           id: 28,
           name: "UPS",
-          icon: "📈",
+          icon: "🔋",
           link: "/UPS",
           showSubMenu: false,
           subMenuItems: [
@@ -413,7 +413,7 @@ export default {
          {
           id: 30,
           name: "RaidStatus",
-          icon: "📈",
+          icon: "💽",
           link: "/RaidStatus",
           showSubMenu: false,
           subMenuItems: [
@@ -433,6 +433,13 @@ export default {
             { id: 271, name: "HistoriaZmian", link: "/HistoriaZmian" }
 
           ]
+        },
+        {
+          id: 999,
+          name: "Pomoc PDF",
+          icon: "ℹ️",
+          link: "/BMS_help.pdf",
+          external: true
         }
       ]
     };

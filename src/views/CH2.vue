@@ -5,23 +5,23 @@
       <div id="punkty"></div>
       
       <div id="CH2_Alarmy_img" v-if="points.CH2_Alarmy === 1">
-        <img src="@/assets/img/Chiller_alarm.gif" style="position:absolute; top:180px; left: 0px;">
+        <img src="@/assets/img/Chiller_alarm.gif" style="position:absolute; top:208px; left: 56px;">
       </div>
       
-      <div id="CH2_In">
+      <div id="CH2_In" style="position:absolute; top:144px; left:529px;">
         <span class="lowered">{{ points.CH2_In ? points.CH2_In + '°C' : 'N/A' }}</span>
       </div>
       
-      <div id="CH2_Out">
+      <div id="CH2_Out" style="position:absolute; top:144px; left:386px;">
         <span class="lowered">{{ points.CH2_Out ? points.CH2_Out + '°C' : 'N/A' }}</span>
       </div>
       
-      <div id="CH2_Praca">
+      <div id="CH2_Praca" style="position:absolute; top:176px; left:126px;">
         <span class="lowered">{{ points.CH2_Praca ? 'ON' : 'OFF' }}</span>
       </div>
       
       <div id="CH2_Praca_img" v-if="points.CH2_Praca === 1">
-        <img src="@/assets/img/Chiller_praca.gif" style="position:absolute; top:180px; left: 0px;">
+        <img src="@/assets/img/Chiller_praca.gif" style="position:absolute; top:208px; left: 56px;">
       </div>
     </div>
   </div>
