@@ -9,6 +9,7 @@ import UsersView from "../views/UsersView.vue";
 import RoomNW1Zadane from "@/components/RoomNW1Zadane.vue";
 import RoomNW1Wymuszenia from "@/components/RoomNW1Wymuszenia.vue";
 import UpsShutdown from '@/views/UpsShutdown.vue';
+import RaidStatus from "@/views/RaidStatus.vue";
 
 
 
@@ -486,7 +487,12 @@ const routes = [
   name: 'UpsShutdown',
   component: UpsShutdown,
   meta: { level: 2 }
-}
+},
+{
+  path: "/RaidStatus",
+  name: "RaidStatus",
+  component: RaidStatus
+},
 ]
 
 const router = createRouter({

@@ -410,6 +410,18 @@ export default {
             
           ]
         },
+         {
+          id: 30,
+          name: "RaidStatus",
+          icon: "📈",
+          link: "/RaidStatus",
+          showSubMenu: false,
+          subMenuItems: [
+            { id: 265, name: "RaidStatus", link: "/RaidStatus" },
+            
+            
+          ]
+        },
              {
           id: 27,
           name: "Users",
